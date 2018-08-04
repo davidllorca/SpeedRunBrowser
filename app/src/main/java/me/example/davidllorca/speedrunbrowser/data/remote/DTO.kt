@@ -11,11 +11,11 @@ class GamesResponse {
 
     @SerializedName("data")
     @Expose
-    var games: List<Game>? = null
+    var gameItems: List<GameItem>? = null
 
 }
 
-class Game {
+class GameItem {
 
     @SerializedName("id")
     @Expose
