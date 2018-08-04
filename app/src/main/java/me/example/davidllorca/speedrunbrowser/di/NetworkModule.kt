@@ -1,4 +1,4 @@
-package me.example.davidllorca.speedrunbrowser.di.application
+package me.example.davidllorca.speedrunbrowser.di
 
 import dagger.Module
 import dagger.Provides
@@ -13,10 +13,13 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
+    private val BASE_URL = "http://www.speedrun.com"
+
     @Singleton
     @Provides
     internal fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) // TODO Set own threading config
                 .build()

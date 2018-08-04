@@ -1,4 +1,4 @@
-package me.example.davidllorca.speedrunbrowser.di.application
+package me.example.davidllorca.speedrunbrowser.di
 
 import dagger.Module
 import dagger.Provides
@@ -12,14 +12,10 @@ import javax.inject.Singleton
 @Module
 class SpeedRunApiModule {
 
-    private val BASE_URL = "http://www.speedrun.com"
-
     @Singleton
     @Provides
-    internal fun getSpeedRunApi(retrofit: Retrofit): SpeedRunApi {
-        return retrofit.newBuilder()
-                .baseUrl(BASE_URL)
-                .build()
+    fun getSpeedRunApi(retrofit: Retrofit): SpeedRunApi {
+        return retrofit
                 .create<SpeedRunApi>(SpeedRunApi::class.java)
     }
 }

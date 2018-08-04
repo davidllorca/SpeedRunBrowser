@@ -26,16 +26,23 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibsVersion}"
 
     implementation "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintLayoutVersion}"
 
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofitVersion}"
 
+    // Dagger
     implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
+
+    // Dagger android
+    kapt "com.google.dagger:dagger-android-processor:${rootProject.ext.daggerVersion}"
+    implementation "com.google.dagger:dagger-android:${rootProject.ext.daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${rootProject.ext.daggerVersion}"
 
 }
