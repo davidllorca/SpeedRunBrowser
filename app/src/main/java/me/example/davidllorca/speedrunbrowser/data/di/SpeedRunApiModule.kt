@@ -17,6 +17,7 @@ class SpeedRunApiModule {
     fun getSpeedRunApi(retrofit: Retrofit): SpeedRunApi {
         return retrofit
                 .create<SpeedRunApi>(SpeedRunApi::class.java)
+
     }
 
 }
