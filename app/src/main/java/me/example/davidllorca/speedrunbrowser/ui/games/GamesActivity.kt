@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import dagger.android.AndroidInjection
 import me.example.davidllorca.speedrunbrowser.R
-import me.example.davidllorca.speedrunbrowser.data.model.Game
+import me.example.davidllorca.speedrunbrowser.domain.model.Game
 import javax.inject.Inject
 
 class GamesActivity : AppCompatActivity(), GamesContract.View {

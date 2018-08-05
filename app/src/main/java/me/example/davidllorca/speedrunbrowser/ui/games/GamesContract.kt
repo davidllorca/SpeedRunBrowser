@@ -1,6 +1,6 @@
 package me.example.davidllorca.speedrunbrowser.ui.games
 
-import me.example.davidllorca.speedrunbrowser.data.model.Game
+import me.example.davidllorca.speedrunbrowser.domain.model.Game
 import me.example.davidllorca.speedrunbrowser.ui.common.BasePresenter
 import me.example.davidllorca.speedrunbrowser.ui.common.BaseView
 

@@ -1,4 +1,4 @@
-package me.example.davidllorca.speedrunbrowser.di
+package me.example.davidllorca.speedrunbrowser.data.di
 
 import dagger.Module
 import dagger.Provides

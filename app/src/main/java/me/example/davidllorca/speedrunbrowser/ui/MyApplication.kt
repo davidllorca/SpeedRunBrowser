@@ -5,7 +5,7 @@ import android.app.Application
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
-import me.example.davidllorca.speedrunbrowser.di.application.DaggerApplicationComponent
+import me.example.davidllorca.speedrunbrowser.di.DaggerApplicationComponent
 import javax.inject.Inject
 
 class MyApplication : Application(), HasActivityInjector {
