@@ -40,9 +40,14 @@ dependencies {
     implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
 
-    // Dagger android
+    // Dagger Android
     kapt "com.google.dagger:dagger-android-processor:${rootProject.ext.daggerVersion}"
     implementation "com.google.dagger:dagger-android:${rootProject.ext.daggerVersion}"
     implementation "com.google.dagger:dagger-android-support:${rootProject.ext.daggerVersion}"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxAndroidVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxJavaVersion}"
+
 
 }
