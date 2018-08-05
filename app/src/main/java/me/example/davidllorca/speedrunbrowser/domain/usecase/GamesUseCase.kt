@@ -1,4 +1,4 @@
-package me.example.davidllorca.speedrunbrowser.domain
+package me.example.davidllorca.speedrunbrowser.domain.usecase
 
 import io.reactivex.Scheduler
 import io.reactivex.Single

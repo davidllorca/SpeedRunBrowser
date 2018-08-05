@@ -6,7 +6,7 @@ import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.example.davidllorca.speedrunbrowser.data.remote.SpeedRunApi
-import me.example.davidllorca.speedrunbrowser.domain.GamesUseCase
+import me.example.davidllorca.speedrunbrowser.domain.usecase.GamesUseCase
 import javax.inject.Named
 import javax.inject.Singleton
 

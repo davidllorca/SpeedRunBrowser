@@ -71,7 +71,7 @@ class RunItem {
     var id: String? = null
     @SerializedName("game")
     @Expose
-    var game: String? = null
+    var gameId: String? = null
     @SerializedName("videos")
     @Expose
     var videos: Videos? = null
@@ -117,5 +117,16 @@ class Videos {
     @SerializedName("links")
     @Expose
     var links: List<Link>? = null
+
+}
+
+class UserItem {
+
+    @SerializedName("id")
+    @Expose
+    var id: String? = null
+    @SerializedName("names")
+    @Expose
+    var names: Names? = null
 
 }

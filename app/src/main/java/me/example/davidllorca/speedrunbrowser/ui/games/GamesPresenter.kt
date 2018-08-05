@@ -1,8 +1,8 @@
 package me.example.davidllorca.speedrunbrowser.ui.games
 
 import android.util.Log
-import me.example.davidllorca.speedrunbrowser.domain.GamesUseCase
 import me.example.davidllorca.speedrunbrowser.domain.common.NoParams
+import me.example.davidllorca.speedrunbrowser.domain.usecase.GamesUseCase
 import javax.inject.Inject
 
 class GamesPresenter @Inject constructor(private val useCase: GamesUseCase) : GamesContract.Presenter {
