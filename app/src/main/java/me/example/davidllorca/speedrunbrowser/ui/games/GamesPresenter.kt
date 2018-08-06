@@ -16,7 +16,7 @@ class GamesPresenter @Inject constructor(
 
     override fun loadGames() {
         add(useCase.execute(NoParams())
-                .subscribe({ games -> Timber.i(games.toString()) },
+                .subscribe({ games -> mView?.displayGames(games) },
                         { error -> Timber.e(error) })
         )
     }

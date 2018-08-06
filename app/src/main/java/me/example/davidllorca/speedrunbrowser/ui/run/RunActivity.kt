@@ -5,11 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_run.*
 import me.example.davidllorca.speedrunbrowser.R
 import me.example.davidllorca.speedrunbrowser.domain.model.Game
 import me.example.davidllorca.speedrunbrowser.domain.model.Run
 import me.example.davidllorca.speedrunbrowser.domain.model.User
-import timber.log.Timber
 import javax.inject.Inject
 
 class RunActivity : AppCompatActivity(), RunContract.View {
@@ -24,32 +24,37 @@ class RunActivity : AppCompatActivity(), RunContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_run)
 
-//        targetGame = intent.getParcelableExtra(EXTRA_GAME) // TODO REMOVE NOTES , Game("k6qqkx6g", "name", null)
-
-        targetGame = Game("k6qqkx6g", "name", null) // TODO REMOVE WIP
+        targetGame = intent.getParcelableExtra(EXTRA_GAME)
         if (targetGame == null) {
             finish()
             throw IllegalArgumentException("${RunActivity::class.simpleName} need a Game to be initialized")
         }
+
     }
 
     override fun onResume() {
         super.onResume()
         presenter.bindView(this)
         presenter.loadRun(targetGame)
+        displayGame(targetGame)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
         presenter.dropView()
     }
 
+    fun displayGame(game: Game) {
+//        iv_game_item_logo.background = game.logo.url // TODO
+        tv_run_game_name.text = game.name
+    }
+
     override fun displayRun(run: Run) {
-        Timber.i(run.toString())
+        tv_run_time.text = run.time.toString()
     }
 
     override fun displayPlayer(user: User) {
-        Timber.i(user.toString())
+        tv_run_player_name.text = user.name
     }
 
     companion object {
