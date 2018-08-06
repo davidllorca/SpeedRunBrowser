@@ -10,16 +10,13 @@ class GameItem {
 
     @SerializedName("id")
     @Expose
-    var id: String? = null
+    lateinit var id: String
     @SerializedName("names")
     @Expose
-    var names: Names? = null
+    lateinit var names: Names
     @SerializedName("assets")
     @Expose
-    var assets: Assets? = null
-    @SerializedName("links")
-    @Expose
-    var links: List<Link>? = null
+    lateinit var assets: Assets
 
 }
 
@@ -27,18 +24,15 @@ class Assets {
 
     @SerializedName("logo")
     @Expose
-    var logo: Logo? = null
+    lateinit var logo: Logo
 
 }
 
 class Link {
 
-    @SerializedName("rel")
-    @Expose
-    var rel: String? = null
     @SerializedName("uri")
     @Expose
-    var uri: String? = null
+    lateinit var uri: String
 
 }
 
@@ -46,13 +40,13 @@ class Logo {
 
     @SerializedName("uri")
     @Expose
-    var uri: String? = null
+    lateinit var uri: String
     @SerializedName("width")
     @Expose
-    var width: Int? = null
+    var width: Int = 0
     @SerializedName("height")
     @Expose
-    var height: Int? = null
+    var height: Int = 0
 
 }
 
@@ -68,39 +62,27 @@ class RunItem {
 
     @SerializedName("id")
     @Expose
-    var id: String? = null
+    lateinit var id: String
     @SerializedName("game")
     @Expose
-    var gameId: String? = null
+    lateinit var gameId: String
     @SerializedName("videos")
     @Expose
-    var videos: Videos? = null
+    lateinit var videos: Videos
     @SerializedName("players")
     @Expose
-    var players: List<Player>? = null
-    @SerializedName("date")
-    @Expose
-    var date: String? = null
-    @SerializedName("submitted")
-    @Expose
-    var submitted: String? = null
+    lateinit var players: List<Player>
     @SerializedName("times")
     @Expose
-    var times: Times? = null
+    lateinit var times: Times
 
 }
 
 class Player {
 
-    @SerializedName("rel")
-    @Expose
-    var rel: String? = null
     @SerializedName("id")
     @Expose
     var id: String? = null
-    @SerializedName("uri")
-    @Expose
-    var uri: String? = null
 
 }
 
@@ -108,7 +90,7 @@ class Times {
 
     @SerializedName("realtime_t")
     @Expose
-    var realtimeT: Int? = null
+    var realtimeT: Int = 0
 
 }
 
@@ -116,7 +98,7 @@ class Videos {
 
     @SerializedName("links")
     @Expose
-    var links: List<Link>? = null
+    lateinit var links: List<Link>
 
 }
 
@@ -124,9 +106,9 @@ class UserItem {
 
     @SerializedName("id")
     @Expose
-    var id: String? = null
+    lateinit var id: String
     @SerializedName("names")
     @Expose
-    var names: Names? = null
+    lateinit var names: Names
 
 }

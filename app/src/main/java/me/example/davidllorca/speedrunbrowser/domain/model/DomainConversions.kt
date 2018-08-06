@@ -9,9 +9,9 @@ import me.example.davidllorca.speedrunbrowser.data.remote.UserItem
  */
 
 fun Iterable<GameItem>.toGame(): List<Game> = map {
-    val name = it.names?.international
-    val logo = with(it.assets?.logo) {
-        Logo(this?.uri, this?.width, this?.height)
+    val name = it.names.international
+    val logo = with(it.assets.logo) {
+        Logo(this.uri, this.width, this.height)
     }
     Game(it.id, name, logo)
 }
@@ -19,9 +19,9 @@ fun Iterable<GameItem>.toGame(): List<Game> = map {
 fun Iterable<RunItem>.toRun(): List<Run> = map {
     Run(it.id,
             Game(id = it.gameId),
-            "",
-            it.times?.realtimeT,
-            it.videos?.links?.first()?.uri)
+            User(it.players.first().id),
+            it.times.realtimeT,
+            it.videos.links.first().uri)
 }
 
-fun UserItem.toUser(): User = User(id, names?.international)
+fun UserItem.toUser(): User = User(id, names.international)

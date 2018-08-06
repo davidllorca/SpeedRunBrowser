@@ -1,13 +1,21 @@
 package me.example.davidllorca.speedrunbrowser.domain.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 
 /**
  * Domain classes to represent data(Visual Objects).
  */
-data class Game(val id: String?, val name: String? = "name", val logo: Logo? = null)
 
-data class Run(val id: String?, val game: Game?, val playerName: String?, val time: Int?, val videoUrl: String?)
+@Parcelize
+data class Game(val id: String, val name: String? = "name", val logo: Logo? = null) : Parcelable
 
-data class Logo(val url: String?, val width: Int?, val height: Int?)
+@Parcelize
+data class Run(val id: String, val game: Game?, val player: User? = null, val time: Int, val videoUrl: String?) : Parcelable
 
-data class User(val id: String?, val name: String?)
+@Parcelize
+data class Logo(val url: String, val width: Int?, val height: Int?) : Parcelable
+
+@Parcelize
+data class User(val id: String?, val name: String? = null) : Parcelable

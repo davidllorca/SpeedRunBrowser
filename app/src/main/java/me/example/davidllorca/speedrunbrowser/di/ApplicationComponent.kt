@@ -10,12 +10,14 @@ import me.example.davidllorca.speedrunbrowser.domain.di.DomainModule
 
 import me.example.davidllorca.speedrunbrowser.ui.MyApplication
 import me.example.davidllorca.speedrunbrowser.ui.games.GamesModule
+import me.example.davidllorca.speedrunbrowser.ui.run.RunModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
     (AndroidInjectionModule::class),
     (GamesModule::class),
+    (RunModule::class),
     (DomainModule::class),
     (NetworkModule::class),
     (SpeedRunApiModule::class)

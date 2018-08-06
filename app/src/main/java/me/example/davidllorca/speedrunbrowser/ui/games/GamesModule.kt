@@ -8,7 +8,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class GamesModule {
 
     @ContributesAndroidInjector
-    internal abstract fun contributeGameListActivity(): GamesActivity
+    internal abstract fun contributeGamesActivity(): GamesActivity
 
     @Binds
     internal abstract fun gamesPresenter(presenter: GamesPresenter): GamesContract.Presenter

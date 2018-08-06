@@ -7,6 +7,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.example.davidllorca.speedrunbrowser.data.remote.SpeedRunApi
 import me.example.davidllorca.speedrunbrowser.domain.usecase.GamesUseCase
+import me.example.davidllorca.speedrunbrowser.domain.usecase.RunsUseCase
+import me.example.davidllorca.speedrunbrowser.domain.usecase.UserUseCase
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -17,6 +19,18 @@ class DomainModule {
     @Provides
     fun getGamesUseCase(api: SpeedRunApi): GamesUseCase {
         return GamesUseCase(api, workerScheduler(), deliveryScheduler())
+    }
+
+    @Singleton
+    @Provides
+    fun getRunsUseCase(api: SpeedRunApi): RunsUseCase {
+        return RunsUseCase(api, workerScheduler(), deliveryScheduler())
+    }
+
+    @Singleton
+    @Provides
+    fun getUserUseCase(api: SpeedRunApi): UserUseCase {
+        return UserUseCase(api, workerScheduler(), deliveryScheduler())
     }
 
     @Provides

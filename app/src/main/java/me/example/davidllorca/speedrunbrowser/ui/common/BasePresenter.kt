@@ -1,5 +1,8 @@
 package me.example.davidllorca.speedrunbrowser.ui.common
 
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+
 interface BasePresenter<in T> {
 
     /**
@@ -14,4 +17,13 @@ interface BasePresenter<in T> {
      */
     fun dropView()
 
+    val compositeDisposable: CompositeDisposable
+
+    fun add(vararg disposables: Disposable) {
+        compositeDisposable.addAll(*disposables)
+    }
+
+    fun dispose() {
+        compositeDisposable.clear()
+    }
 }

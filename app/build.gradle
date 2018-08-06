@@ -22,6 +22,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -38,6 +42,7 @@ dependencies {
 
     // Dagger
     implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
 
     // Dagger Android
