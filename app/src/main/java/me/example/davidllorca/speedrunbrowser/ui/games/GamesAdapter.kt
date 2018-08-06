@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_game.view.*
 import me.example.davidllorca.speedrunbrowser.R
 import me.example.davidllorca.speedrunbrowser.domain.model.Game
+import me.example.davidllorca.speedrunbrowser.ui.common.ImageLoader
 
 class GamesAdapter(private var items: List<Game>,
                    private val context: Context,
-                   private val listener: Listener) : RecyclerView.Adapter<ViewHolder>() {
+                   private val listener: Listener,
+                   private val imageLoader: ImageLoader) : RecyclerView.Adapter<ViewHolder>() {
 
     interface Listener {
         fun onClickGame(game: Game)
@@ -29,6 +31,7 @@ class GamesAdapter(private var items: List<Game>,
     override fun onBindViewHolder(viewHolder: ViewHolder, pos: Int) {
         val game = items[pos]
         viewHolder.name.text = game.name
+        imageLoader.loadImage(game.logo?.url, viewHolder.logo)
         viewHolder.itemView.setOnClickListener {
             listener.onClickGame(game)
         }
@@ -41,5 +44,6 @@ class GamesAdapter(private var items: List<Game>,
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val name = view.tv_game_item_name
+    val logo = view.iv_game_item_logo
 
 }

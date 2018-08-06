@@ -10,6 +10,7 @@ import me.example.davidllorca.speedrunbrowser.R
 import me.example.davidllorca.speedrunbrowser.domain.model.Game
 import me.example.davidllorca.speedrunbrowser.domain.model.Run
 import me.example.davidllorca.speedrunbrowser.domain.model.User
+import me.example.davidllorca.speedrunbrowser.ui.common.ImageLoader
 import javax.inject.Inject
 
 class RunActivity : AppCompatActivity(), RunContract.View {
@@ -17,7 +18,10 @@ class RunActivity : AppCompatActivity(), RunContract.View {
     @Inject
     lateinit var presenter: RunPresenter
 
-    lateinit var targetGame: Game
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
+    private lateinit var targetGame: Game
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -44,9 +48,9 @@ class RunActivity : AppCompatActivity(), RunContract.View {
         presenter.dropView()
     }
 
-    fun displayGame(game: Game) {
-//        iv_game_item_logo.background = game.logo.url // TODO
+    private fun displayGame(game: Game) {
         tv_run_game_name.text = game.name
+        imageLoader.loadImage(game.logo?.url ?: "", iv_run_logo)
     }
 
     override fun displayRun(run: Run) {
