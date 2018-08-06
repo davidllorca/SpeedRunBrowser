@@ -1,8 +1,8 @@
 package me.example.davidllorca.speedrunbrowser.domain.model
 
-import me.example.davidllorca.speedrunbrowser.data.remote.GameItem
-import me.example.davidllorca.speedrunbrowser.data.remote.RunItem
-import me.example.davidllorca.speedrunbrowser.data.remote.UserItem
+import me.example.davidllorca.speedrunbrowser.data.remote.model.GameItem
+import me.example.davidllorca.speedrunbrowser.data.remote.model.RunItem
+import me.example.davidllorca.speedrunbrowser.data.remote.model.UserItem
 
 /**
  *  Conversion utilities from data layer models to domain layer models

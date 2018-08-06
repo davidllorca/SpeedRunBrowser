@@ -5,7 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import me.example.davidllorca.speedrunbrowser.data.di.NetworkModule
-import me.example.davidllorca.speedrunbrowser.data.di.SpeedRunApiModule
+import me.example.davidllorca.speedrunbrowser.data.di.RemoteApiModule
 import me.example.davidllorca.speedrunbrowser.domain.di.DomainModule
 import me.example.davidllorca.speedrunbrowser.ui.MyApplication
 import me.example.davidllorca.speedrunbrowser.ui.di.ImageLoaderModule
@@ -21,7 +21,7 @@ import javax.inject.Singleton
     (ImageLoaderModule::class),
     (DomainModule::class),
     (NetworkModule::class),
-    (SpeedRunApiModule::class)
+    (RemoteApiModule::class)
 ])
 interface ApplicationComponent {
 

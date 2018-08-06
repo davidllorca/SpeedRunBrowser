@@ -21,4 +21,5 @@ interface SpeedRunApi {
 
     @GET("/api/v1/users/{id}")
     fun getPlayer(@Path("id") userId: String): Single<UserResponse>
+
 }

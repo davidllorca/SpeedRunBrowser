@@ -1,7 +1,7 @@
 package me.example.davidllorca.speedrunbrowser.data.remote.responses
 
 import com.google.gson.annotations.SerializedName
-import me.example.davidllorca.speedrunbrowser.data.remote.RunItem
+import me.example.davidllorca.speedrunbrowser.data.remote.model.RunItem
 
 class RunsResponse {
 

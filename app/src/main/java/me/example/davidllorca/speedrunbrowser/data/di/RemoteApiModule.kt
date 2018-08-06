@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Provider of APIs.
  */
 @Module
-class SpeedRunApiModule {
+class RemoteApiModule {
 
     @Singleton
     @Provides

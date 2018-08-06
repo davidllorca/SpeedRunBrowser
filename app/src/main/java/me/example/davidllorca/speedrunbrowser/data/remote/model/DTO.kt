@@ -1,4 +1,4 @@
-package me.example.davidllorca.speedrunbrowser.data.remote
+package me.example.davidllorca.speedrunbrowser.data.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
