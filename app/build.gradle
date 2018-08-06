@@ -60,4 +60,8 @@ dependencies {
     // Picasso
     implementation "com.squareup.picasso:picasso:${rootProject.ext.picassoVersion}"
 
+    // Test
+    testImplementation "junit:junit:${rootProject.ext.jUnitVersion}"
+    testImplementation "org.mockito:mockito-core:${rootProject.ext.mockitoVersion}"
+
 }

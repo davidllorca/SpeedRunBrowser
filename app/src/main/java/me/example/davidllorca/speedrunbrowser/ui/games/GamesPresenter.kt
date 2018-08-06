@@ -15,7 +15,7 @@ class GamesPresenter @Inject constructor(
     private var mView: GamesContract.View? = null
 
     override fun loadGames() {
-        add(useCase.execute(NoParams())
+        add(useCase.execute(NoParams)
                 .subscribe({ games -> mView?.displayGames(games) },
                         { error -> Timber.e(error) })
         )

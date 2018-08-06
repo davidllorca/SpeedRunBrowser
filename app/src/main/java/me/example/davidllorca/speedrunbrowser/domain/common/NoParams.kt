@@ -1,3 +1,3 @@
 package me.example.davidllorca.speedrunbrowser.domain.common
 
-class NoParams
+object NoParams
