@@ -2,6 +2,7 @@ package me.example.davidllorca.speedrunbrowser.ui.run
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import dagger.android.AndroidInjection
@@ -55,6 +56,17 @@ class RunActivity : AppCompatActivity(), RunContract.View {
 
     override fun displayRun(run: Run) {
         tv_run_time.text = run.time.toString()
+        bt_run_video.setOnClickListener {
+            intentVideo(run.videoUrl)
+        }
+    }
+
+    private fun intentVideo(videoUrl: String?) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(videoUrl)
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
     }
 
     override fun displayPlayer(user: User) {

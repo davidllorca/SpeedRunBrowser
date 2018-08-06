@@ -14,4 +14,5 @@ class ImageLoader {
                 .load(uri)
                 .into(target)
     }
+
 }
