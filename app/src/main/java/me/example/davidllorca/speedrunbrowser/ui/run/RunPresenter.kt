@@ -1,12 +1,12 @@
 package me.example.davidllorca.speedrunbrowser.ui.run
 
-import android.util.Log
 import io.reactivex.disposables.CompositeDisposable
 import me.example.davidllorca.speedrunbrowser.domain.model.Game
 import me.example.davidllorca.speedrunbrowser.domain.model.Run
 import me.example.davidllorca.speedrunbrowser.domain.model.User
 import me.example.davidllorca.speedrunbrowser.domain.usecase.RunsUseCase
 import me.example.davidllorca.speedrunbrowser.domain.usecase.UserUseCase
+import timber.log.Timber
 import javax.inject.Inject
 
 class RunPresenter @Inject constructor(
@@ -24,7 +24,7 @@ class RunPresenter @Inject constructor(
                 .subscribe({ runs: List<Run> ->
                     mView?.displayRun(runs.first())
                     loadUser(runs.first())
-                }, { error: Throwable -> Log.e("TAG", error.printStackTrace().toString()) })
+                }, { error: Throwable -> Timber.e(error) })
         )
     }
 
@@ -33,7 +33,7 @@ class RunPresenter @Inject constructor(
 
         add(userUseCase.execute(params)
                 .subscribe({ user: User? -> mView?.displayPlayer(user!!) },
-                        { error: Throwable -> Log.e("TAG", error.printStackTrace().toString()) }) // TODO FIX NULLABILITIES
+                        { error: Throwable -> Timber.e(error) }) // TODO FIX NULLABILITIES
         )
     }
 

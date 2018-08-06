@@ -1,9 +1,9 @@
 package me.example.davidllorca.speedrunbrowser.ui.games
 
-import android.util.Log
 import io.reactivex.disposables.CompositeDisposable
 import me.example.davidllorca.speedrunbrowser.domain.common.NoParams
 import me.example.davidllorca.speedrunbrowser.domain.usecase.GamesUseCase
+import timber.log.Timber
 import javax.inject.Inject
 
 class GamesPresenter @Inject constructor(
@@ -16,8 +16,8 @@ class GamesPresenter @Inject constructor(
 
     override fun loadGames() {
         add(useCase.execute(NoParams())
-                .subscribe({ t -> Log.i("TAG", t.toString()) },
-                        { t -> Log.e("TAG", t.printStackTrace().toString()) })
+                .subscribe({ games -> Timber.i(games.toString()) },
+                        { error -> Timber.e(error) })
         )
     }
 
