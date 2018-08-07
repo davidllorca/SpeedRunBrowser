@@ -1,5 +1,7 @@
 package me.example.davidllorca.speedrunbrowser.ui.run
 
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Single
 import me.example.davidllorca.speedrunbrowser.domain.model.Game
 import me.example.davidllorca.speedrunbrowser.domain.model.Run
@@ -11,8 +13,6 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import org.mockito.MockitoAnnotations
 
 class RunPresenterTest {
 
@@ -29,17 +29,23 @@ class RunPresenterTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
-        presenter = RunPresenter(runUseCase, userUseCase)
-        presenter.bindView(view)
+        //MockitoAnnotations.initMocks(this)
+        //presenter = RunPresenter(runUseCase, userUseCase)
+        //presenter.bindView(view)
     }
 
     @Test
     fun loadRun() {
         val run = Run("1", Game("1"), User(null), 100, "url")
+        val runUseCase = mock<RunsUseCase> {
+            on { loadRun() }
+            doReturn { Single.just(listOf(run)) }
+        }
+        //  `when`(runUseCase.execute(ArgumentMatchers.any(RunsUseCase.Params::class.java)))
+        //        .thenReturn(Single.just(listOf(run)))
 
-        `when`(runUseCase.execute(RunsUseCase.Params(Game("1"))))
-                .thenReturn(Single.just(listOf(run)))
+        presenter = RunPresenter(runUseCase, userUseCase)
+        presenter.bindView(view)
 
         presenter.loadRun(Game("1"))
 

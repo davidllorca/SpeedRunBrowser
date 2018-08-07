@@ -1,5 +1,6 @@
 package me.example.davidllorca.speedrunbrowser.ui.games
 
+import com.nhaarman.mockitokotlin2.any
 import io.reactivex.Single
 import me.example.davidllorca.speedrunbrowser.domain.common.NoParams
 import me.example.davidllorca.speedrunbrowser.domain.model.Game
@@ -30,7 +31,7 @@ class GamesPresenterTest {
     }
 
     @Test
-    fun `loadGames`() {
+    fun `when loadGames view callback is called`() {
         val games = listOf(Game("1", "name1"),
                 Game("2", "name2"),
                 Game("2", "name3"))
@@ -38,7 +39,7 @@ class GamesPresenterTest {
 
         presenter.loadGames()
 
-        verify(view).displayGames(games)
+        verify(view.displayViewState(any()))
     }
 
     @After

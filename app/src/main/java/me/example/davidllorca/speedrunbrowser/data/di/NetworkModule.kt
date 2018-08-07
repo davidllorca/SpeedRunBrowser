@@ -17,12 +17,16 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    internal fun getRetrofit(): Retrofit {
+    internal fun getRetrofit(converter: GsonConverterFactory): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(converter)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) // TODO Set own threading config
                 .build()
     }
+
+    @Singleton
+    @Provides
+    internal fun getConverter() = GsonConverterFactory.create()
 
 }

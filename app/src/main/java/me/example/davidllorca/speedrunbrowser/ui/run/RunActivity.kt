@@ -49,16 +49,30 @@ class RunActivity : AppCompatActivity(), RunContract.View {
         presenter.dropView()
     }
 
+    override fun displayViewState(state: RunViewState) {
+        if (state.loading) {
+            // TODO show spinner or similar
+        } else {
+            if (state.game != null) displayGame(state.game!!)
+            if (state.run != null) displayRun(state.run!!)
+            if (state.player != null) displayPlayer(state.player!!)
+        }
+    }
+
     private fun displayGame(game: Game) {
         tv_run_game_name.text = game.name
         imageLoader.loadImage(game.logo?.url ?: "", iv_run_logo)
     }
 
-    override fun displayRun(run: Run) {
+    private fun displayRun(run: Run) {
         tv_run_time.text = run.time.toString()
         bt_run_video.setOnClickListener {
             intentVideo(run.videoUrl)
         }
+    }
+
+    private fun displayPlayer(user: User) {
+        tv_run_player_name.text = user.name
     }
 
     private fun intentVideo(videoUrl: String?) {
@@ -69,9 +83,6 @@ class RunActivity : AppCompatActivity(), RunContract.View {
         }
     }
 
-    override fun displayPlayer(user: User) {
-        tv_run_player_name.text = user.name
-    }
 
     companion object {
         private const val EXTRA_GAME: String = "game"

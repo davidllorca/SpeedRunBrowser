@@ -13,37 +13,55 @@ class RunPresenter @Inject constructor(
         private val runsUseCase: RunsUseCase,
         private val userUseCase: UserUseCase) : RunContract.Presenter {
 
+
     override val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    private var mView: RunContract.View? = null
+    override var view: RunContract.View? = null
+    override var viewState: RunViewState = RunViewState(false, null, null)
 
     override fun loadRun(game: Game) {
         val params = RunsUseCase.Params(game)
 
         add(runsUseCase.execute(params)
                 .subscribe({ runs: List<Run> ->
-                    mView?.displayRun(runs.first())
-                    loadUser(runs.first())
+                    viewState = RunViewState(loading = false, run = runs.first())
+                    view?.displayViewState(viewState)
+
+                    runs.first().player?.id?.run {
+                        loadUser(this)
+                    }
                 }, { error: Throwable -> Timber.e(error) })
         )
     }
 
-    private fun loadUser(targetRun: Run) {
-        val params = UserUseCase.Params(targetRun.player?.id!!) // TODO fix nullability
+    private fun loadUser(userId: String) {
+        val params = UserUseCase.Params(userId)
 
         add(userUseCase.execute(params)
-                .subscribe({ user: User? -> mView?.displayPlayer(user!!) },
-                        { error: Throwable -> Timber.e(error) }) // TODO FIX NULLABILITIES
+                .subscribe({ user: User ->
+                    viewState = viewState.copy(loading = false, player = user)
+                    view?.displayViewState(viewState)
+                }, { error: Throwable -> Timber.e(error) })
         )
     }
 
+    override fun displayViewState(state: RunViewState) {
+        view?.displayViewState(state)
+    }
+
     override fun bindView(view: RunContract.View) {
-        mView = view
+        this.view = view
     }
 
     override fun dropView() {
-        mView = null
+        view = null
         dispose()
     }
 
 }
+
+data class RunViewState(
+        var loading: Boolean,
+        var game: Game? = null,
+        var run: Run? = null,
+        var player: User? = null)

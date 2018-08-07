@@ -42,8 +42,12 @@ class GamesActivity : AppCompatActivity(), GamesContract.View, GamesAdapter.List
         presenter.dropView()
     }
 
-    override fun displayGames(games: List<Game>) {
-        (rv_games_list.adapter as GamesAdapter).setGames(games)
+    override fun displayViewState(state: GamesViewState) {
+        if (state.loading) {
+            // TODO show spinner or similar
+        } else {
+            (rv_games_list.adapter as GamesAdapter).setGames(state.games)
+        }
     }
 
     override fun onClickGame(game: Game) {
