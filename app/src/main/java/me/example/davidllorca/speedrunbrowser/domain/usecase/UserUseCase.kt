@@ -18,7 +18,7 @@ class UserUseCase(
         return remoteRequester.getPlayer(params.userId)
                 .map { response: UserResponse ->
                     response.userItem?.toUser() ?: User("", "")
-                } // TODO SOLVE THIS SHIT
+                }
                 .subscribeOn(workScheduler)
                 .observeOn(deliveryScheduler)
     }
