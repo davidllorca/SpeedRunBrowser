@@ -5,7 +5,9 @@ import me.example.davidllorca.speedrunbrowser.data.remote.responses.GamesRespons
 import me.example.davidllorca.speedrunbrowser.data.remote.responses.RunsResponse
 import me.example.davidllorca.speedrunbrowser.data.remote.responses.UserResponse
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RemoteRequester @Inject constructor(private val api: SpeedRunApi) {
 
     fun getGames(): Single<GamesResponse> = api.getGames()
