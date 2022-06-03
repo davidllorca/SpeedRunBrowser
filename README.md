@@ -1,4 +1,4 @@
-# SpeedRunBrowser
+# SpeedRunBrowser [Test project]
 Browser for http://www.speedrun.com
 
 ## Requirements
